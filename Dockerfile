@@ -1,7 +1,7 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 # Author and Docker Image information.
-LABEL maintainer="hrvoje.varga@gmail.com"
+LABEL maintainer="mdziurowski@gmail.com"
 LABEL build="./scripts/build-vscode-golang-docker.sh"
 LABEL run="./scripts/run-vscode-golang-docker.sh"
 
@@ -27,7 +27,7 @@ COPY files/vscode-config.json /tmp/vscode-config.json
 RUN rm -rf /var/lib/apt/lists/*
 
 # Install Go.
-RUN curl -s https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz | tar -v -C /usr/local -xz
+RUN curl -s https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz | tar -v -C /usr/local -xz
 ENV PATH $PATH:/usr/local/go/bin
 RUN mkdir -p /home/docker/go/src && \
     chown -R docker:docker /home/docker/go
